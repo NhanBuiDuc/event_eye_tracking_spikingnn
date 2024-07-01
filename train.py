@@ -27,8 +27,8 @@ def launch_fire(
     arch_name="retina", # ["retina", "3et"]
     dataset_name="ini-30", # ["ini-30", "synthetic"]
     run_name=None,
-    output_dir="/datasets/pbonazzi/retina/output/",
-    data_dir="/datasets/pbonazzi/evs_eyetracking/evs_ini30",
+    output_dir="datasets/retina/output/",
+    data_dir="datasets/evs_ini30",
     path_to_run=None,
     verify_hardware_compatibility=True,
     # dataset_params
