@@ -51,15 +51,16 @@ class Ini30Dataset:
         self.uniform_noise = dataset_params["uniform_noise"]
         self.time_jitter = dataset_params["time_jitter"]
 
-        self.y = pd.read_csv(os.path.join(self.data_dir, "silver.csv"))
-        self.experiments = np.unique(self.y["exp_name"]).tolist()
+        self.y = pd.read_csv(os.path.join(self.data_dir, "silver.csv"), delimiter='\t')
+        # self.experiments = np.unique(self.y["exp_name"]).tolist()
 
-        filter_values = [self.experiments[item] for item in list_experiments]
-        self.y = self.y[self.y["exp_name"].isin(filter_values)]
+        # filter_values = [self.experiments[item] for item in list_experiments]
+        # self.y = self.y[self.y["exp_name"].isin(filter_values)]
 
         # correct cropped
         self.min_x, self.max_x = 96, 608
-        self.y = self.y[(self.y.x_coord > self.min_x) & (self.y.x_coord < self.max_x)]
+        print(self.y.columns)
+        self.y = self.y[(self.y["x_coord"] > self.min_x) & (self.y["x_coord"] < self.max_x)]
         self.y.x_coord -= self.min_x
         self.y.y_coord += 16
 
